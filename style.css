@@ -57,5 +57,15 @@ body{
     width: 300px;
     border: 1px solid salmon;
     height: 75px;
-    margin: 15px;
+    margin: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.previous{
+    font-size: 30px;
+}
+.current{
+    font-size: 30px;
 }
