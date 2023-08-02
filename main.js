@@ -31,8 +31,21 @@ document.addEventListener("DOMContentLoaded", function(){
         previousScreen.textContent = currentValue;
         currentScreen.textContent = currentValue;
     })
+
      equal.addEventListener("click", function(){
-        calculate()
+        if(currentValue != '' && previousValue != ''){
+            calculate()
+            previousScreen.textContent = '';
+            if(previousValue.length <= 9){
+                currentScreen.textContent = previousValue;
+            }else{
+                currentScreen.textContent = previousValue.slice(0,9) + "...";
+            }
+        }
+     })
+     decimal.addEventListener("click", function(){
+        addDecimal();
+
      })
 })
 
@@ -60,6 +73,19 @@ function calculate(){
     } else{
         previousValue /= currentValue;
     }
-    console.log(previousValue);
+    previousValue = roundNumber(previousValue)
+    previousValue = previousValue.toString();
+    currentValue = previousValue.toString();
+
+}
+function roundNumber(num){
+    return Math.round(num * 1000) / 1000;
+}
+
+function addDecimal(){
+    if(!currentValue.includes(".")){
+        currentValue += '.';
+
+    }
 
 }
